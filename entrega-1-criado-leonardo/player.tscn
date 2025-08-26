@@ -7,15 +7,15 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_dw050"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("1_hqtel")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("2_sweqy")
 }],
 "loop": true,
 "name": &"up",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b26j0"]
