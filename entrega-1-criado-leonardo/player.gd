@@ -1,4 +1,5 @@
 extends Area2D
+signal hit
 
 @export var speed = 400
 var screen_size
@@ -11,6 +12,7 @@ func _ready():
 	var shape = $CollisionShape2D.shape
 	if shape is CircleShape2D:
 		radius = shape.radius + 18
+	hide()
 
 func _process(delta):
 	var velocity = Vector2.ZERO
@@ -43,3 +45,15 @@ func _process(delta):
 	# Ajustar con el radio de colisión
 	position.x = clamp(position.x, radius, screen_size.x - radius)
 	position.y = clamp(position.y, radius, screen_size.y - radius)
+
+
+func _on_body_entered(body: Node2D) -> void:
+	hide() # Player disappears after being hit.
+	hit.emit()
+	# Must be deferred as we can't change physics properties on a physics callback.
+	$CollisionShape2D.set_deferred("disabled", true)
+	
+func start(pos):
+	position = pos
+	show()
+	$CollisionShape2D.disabled = false
