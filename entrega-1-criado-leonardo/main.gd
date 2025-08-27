@@ -2,15 +2,31 @@ extends Node
 
 @export var mob_scene: PackedScene
 var score
+var waiting_to_start = false
+
+func _process(_delta):
+	if waiting_to_start and Input.is_action_just_pressed("start_game"):
+		waiting_to_start = false
+		new_game()
 
 func game_over() -> void:
 	$ScoreTimer.stop()
 	$MobTimer.stop()
+	$HUD.show_game_over()
+	# Remove all existing enemies
+	get_tree().call_group("mobs", "queue_free")
+	$Music.stop()
+	$DeathSound.play()
+	waiting_to_start = true
 
 func new_game():
 	score = 0
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
+	$HUD.update_score(score)
+	$HUD.show_message("Get Ready")
+	$Music.play()
+
 
 func _on_mob_timer_timeout() -> void:
 	# Create a new instance of the Mob scene.
@@ -40,6 +56,7 @@ func _on_mob_timer_timeout() -> void:
 
 func _on_score_timer_timeout() -> void:
 	score += 1
+	$HUD.update_score(score)
 
 
 func _on_start_timer_timeout() -> void:
@@ -48,4 +65,4 @@ func _on_start_timer_timeout() -> void:
 	
 
 func _ready():
-	new_game()
+	waiting_to_start = true
