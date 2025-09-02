@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://hudscene"]
+
+[ext_resource type="Script" uid="uid://bgwt1s8w34b0u" path="res://ui/HUD.gd" id="1"]
+
+[node name="HUD" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1")
+
+[node name="Stats" type="VBoxContainer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="Stats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.123473, 0.123473, 0.123473, 1)
+text = "Score: 0"
+
+[node name="HealthLabel" type="Label" parent="Stats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.150145, 0.0320089, 0.0561514, 1)
+text = "Life: N/A"
