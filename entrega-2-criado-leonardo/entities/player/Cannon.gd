@@ -4,6 +4,9 @@ class_name Cannon
 ## Clase que maneja el cañón del jugador
 ## Responsable de disparar proyectiles y manejar la cadencia de disparo
 
+# Señales para comunicación con otros sistemas
+signal projectile_fired(projectile: Node)
+
 @export var projectile_scene: PackedScene = preload("res://entities/projectiles/PlayerProjectile.tscn")
 @export var fire_rate: float = 0.3  # Tiempo entre disparos en segundos
 @export var projectile_speed: float = 400.0
@@ -27,11 +30,11 @@ func _ready() -> void:
 		add_child(fire_point)
 		# Posicionar el punto de disparo en la punta del cañón
 		if texture:
-			fire_point.position.x = texture.get_width() / 2
+			fire_point.position.x = float(texture.get_width()) / 2.0
 		else:
 			fire_point.position.x = 0
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Lógica de cañón que no maneja input directamente
 	# (El Player llama a try_fire para permitir disparar mientras se mueve)
 	pass
@@ -77,6 +80,9 @@ func fire_projectile() -> void:
 	
 	# Configurar dirección (esto también aplicará la velocidad)
 	projectile.set_direction(fire_direction)
+	
+	# Emitir señal para notificar que se disparó un proyectil
+	projectile_fired.emit(projectile)
 	
 	# Activar el cooldown de disparo
 	can_fire = false

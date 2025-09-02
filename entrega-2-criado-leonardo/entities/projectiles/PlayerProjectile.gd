@@ -18,6 +18,7 @@ func _on_area_entered(area: Area2D) -> void:
 	# Intentar obtener el nodo padre que represente al enemigo
 	var owner_node := area.get_parent()
 	if owner_node and owner_node.is_in_group("enemies") and owner_node.has_method("take_damage"):
+		target_hit.emit(owner_node, damage)
 		owner_node.take_damage(damage)
 		_destroy_projectile()
 	# Si el area pertenece al ambiente, destruir
@@ -28,6 +29,7 @@ func _on_body_entered(body: Node) -> void:
 	"""Maneja las colisiones específicas del proyectil del jugador"""
 	# Colisionar con enemigos (torres)
 	if body.is_in_group("enemies") and body.has_method("take_damage"):
+		target_hit.emit(body, damage)
 		body.take_damage(damage)
 		_destroy_projectile()
 	elif body.is_in_group("environment"):

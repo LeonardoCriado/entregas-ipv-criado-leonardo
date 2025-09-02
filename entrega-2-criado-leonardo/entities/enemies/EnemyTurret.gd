@@ -59,7 +59,7 @@ func _ready() -> void:
 		# Posicionar el punto de disparo en la punta frontal de la torre
 		# El sprite apunta hacia arriba, por eso colocamos el punto en -half_height
 		if texture:
-			fire_point.position = Vector2(0, -texture.get_height() / 2)
+			fire_point.position = Vector2(0, -float(texture.get_height()) / 2.0)
 		else:
 			fire_point.position = Vector2.ZERO
 
@@ -83,7 +83,7 @@ func _find_player() -> void:
 	var main_scene = get_tree().current_scene
 	player = main_scene.find_child("Player", true, false)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if player and is_instance_valid(player):
 		# Calcular distancia al jugador
 		var distance_to_player = global_position.distance_to(player.global_position)
@@ -118,7 +118,7 @@ func fire_at_player() -> void:
 	# Calcular la posición real de la punta frontal en coordenadas locales y transformarla a global
 	var local_tip = Vector2.ZERO
 	if texture:
-		local_tip = Vector2(0, -texture.get_height() / 2)
+		local_tip = Vector2(0, -float(texture.get_height()) / 2.0)
 	var world_tip = to_global(local_tip)
 	projectile.global_position = world_tip
 
@@ -133,9 +133,11 @@ func fire_at_player() -> void:
 	if projectile.has_method("set_direction"):
 		projectile.set_direction(fire_direction)
 
-	# Conectar la señal de impacto al método take_damage del jugador (si existe)
-	if player and is_instance_valid(player) and projectile.has_signal("hit") and player.has_method("take_damage"):
-		projectile.connect("hit", Callable(player, "take_damage"))
+	# Conectar la señal de impacto usando la señal heredada target_hit
+	if player and is_instance_valid(player) and projectile.has_signal("target_hit") and player.has_method("take_damage"):
+		projectile.target_hit.connect(func(target: Node, damage: int): 
+			if target == player:
+				player.take_damage(damage))
 	
 	# Activar el cooldown de disparo
 	can_fire = false

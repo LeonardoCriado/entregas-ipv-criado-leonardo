@@ -4,8 +4,6 @@ class_name EnemyProjectile
 ## Proyectil específico de las torres enemigas
 ## Hereda de Projectile y añade comportamientos específicos para enemigos
 
-signal hit(damage)
-
 func _ready() -> void:
 	# Llamar al _ready() de la clase padre
 	super._ready()
@@ -31,8 +29,8 @@ func _on_body_entered(body: Node) -> void:
 
 	if target and target.is_in_group("player"):
 		print("[EnemyProjectile] Found player target: ", target.name)
-		# Emitir señal para notificar que se golpeó al jugador
-		emit_signal("hit", damage)
+		# Emitir señal usando la señal heredada de la clase base
+		target_hit.emit(target, damage)
 		_destroy_projectile()
 		return
 

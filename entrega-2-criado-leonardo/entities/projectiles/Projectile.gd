@@ -4,6 +4,10 @@ class_name Projectile
 ## Clase base para todos los proyectiles
 ## Maneja la velocidad, dirección y destrucción automática
 
+# Señales para comunicación
+signal projectile_destroyed
+signal target_hit(target: Node, damage: int)
+
 @export var speed: float = 300.0
 @export var damage: int = 1
 @export var lifetime: float = 5.0
@@ -28,9 +32,10 @@ func set_direction(new_direction: Vector2) -> void:
 
 func _destroy_projectile() -> void:
 	"""Destruye el proyectil"""
+	projectile_destroyed.emit()
 	queue_free()
 
-func _on_body_entered(body: Node) -> void:
+func _on_body_entered(_body: Node) -> void:
 	"""Maneja las colisiones del proyectil"""
 	# Implementar en las clases hijas según sea necesario
 	pass

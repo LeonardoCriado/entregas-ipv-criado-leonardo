@@ -1,4 +1,8 @@
 extends RigidBody2D
+class_name Player
+
+## Jugador principal del juego
+## Maneja movimiento, vida y disparo a través del cañón
 
 # Configuración de movimiento con física
 @export var max_speed: float = 300.0  # Velocidad máxima
@@ -20,6 +24,9 @@ var current_health: int
 var velocity: float = 0.0  # Velocidad actual horizontal
 
 func _ready() -> void:
+	# Añadir al grupo para identificación por otros sistemas
+	add_to_group("player")
+	
 	# Obtener el ancho de la pantalla
 	screen_width = get_viewport().get_visible_rect().size.x
 	
