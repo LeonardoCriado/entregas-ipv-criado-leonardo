@@ -7,7 +7,5 @@
 texture = ExtResource("2_1o838")
 speed = 100.0
 
-[node name="Timer" type="Timer" parent="." index="0"]
-wait_time = 4.0
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Timer" parent="." index="0"]
+wait_time = 6.823
