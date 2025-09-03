@@ -28,4 +28,4 @@ expand_mode = 1
 position = Vector2(411, 422)
 
 [node name="Turret" parent="." instance=ExtResource("5_fos0i")]
-position = Vector2(199, 198)
+position = Vector2(579, 195)
