@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu75jric4dwk5"]
+[gd_scene load_steps=5 format=3 uid="uid://bu75jric4dwk5"]
 
 [ext_resource type="PackedScene" uid="uid://dpvd0fciocrv7" path="res://entities/player/Player.tscn" id="1"]
+[ext_resource type="Script" uid="uid://he47m45u48jb" path="res://main.gd" id="1_cm0pq"]
 [ext_resource type="Texture2D" uid="uid://cri278y4uuia0" path="res://assets/textures/background.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://214crh1bkff6" path="res://assets/textures/floor.png" id="3"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_cm0pq")
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 15

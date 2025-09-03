@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://r3npbx2hto17"]
+[gd_scene load_steps=2 format=3 uid="uid://r3npbx2hto17"]
+
+[ext_resource type="Script" uid="uid://cpwix3p6n2dgi" path="res://entities/Projectile/abstract_projectile.gd" id="1_xg4j5"]
 
 [node name="AbstractProjectile" type="Sprite2D"]
+script = ExtResource("1_xg4j5")

@@ -13,3 +13,5 @@ metadata/_edit_group_ = true
 [node name="Cannon" type="Sprite2D" parent="."]
 texture = ExtResource("3_l3c03")
 script = ExtResource("4_eaotn")
+
+[node name="FirePosition" type="Marker2D" parent="Cannon"]
