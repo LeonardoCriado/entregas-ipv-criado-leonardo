@@ -1,6 +1,9 @@
 extends Sprite2D
 class_name Projectile
 
+@export var speed:float
+
+#Vector normalizado
 var direction:Vector2
 
 func _ready() -> void:
@@ -12,4 +15,5 @@ func set_starting_values(starting_position:Vector2, direction:Vector2):
 	set_physics_process(true)
 
 func _physics_process(delta: float) -> void:
-	position.x += 50+delta
+	position += direction * 50 * delta
+	

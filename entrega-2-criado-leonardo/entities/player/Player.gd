@@ -2,7 +2,7 @@ extends Sprite2D
 
 var speed = 200 #Pixeles
 var projectile_container:Node
-@onready var cannon = $Cañon
+@onready var cannon = $Cannon
 
 func set_projectile_container(container:Node):
 	cannon.projectile_container =  container
