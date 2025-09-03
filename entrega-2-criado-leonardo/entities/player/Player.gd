@@ -5,9 +5,9 @@ var speed = 200 #Pixeles
 
 func _physics_process(delta):
 	# Rotación del cañón hacia el mouse
-	var mouse_position = get_global_mouse_position()
-	var angle = (mouse_position - cannon.global_position).angle()
-	cannon.rotation = angle
+	var mouse_position:Vector2 = get_global_mouse_position()
+	cannon.look_at(mouse_position)
+	#var angle = (mouse_position - cannon.global_position).angle()
 	
 	# Movimiento horizontal del jugador
 	var direction:int = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
