@@ -1,14 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnc5muoeyfwah"]
+[gd_scene load_steps=7 format=3 uid="uid://dnc5muoeyfwah"]
 
 [ext_resource type="PackedScene" uid="uid://87su3rinuscl" path="res://entities/player/Player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cwss7yl8udbui" path="res://assets/textures/background.png" id="2"]
 [ext_resource type="Script" uid="uid://bkmvt4ya2xfm8" path="res://Main.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://bscjwoaotlcqc" path="res://entities/enemies/Turret.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://c0ob8wj5qk0uq" path="res://world/Floor.tscn" id="4_3dxm6"]
 [ext_resource type="Script" uid="uid://ertnqm8kd3lw" path="res://entities/enemies/TurretsSpawner.gd" id="5"]
-[ext_resource type="Texture2D" uid="uid://dwg3vpmlm24nh" path="res://assets/textures/floor.png" id="6"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fos0i"]
-size = Vector2(65.7701, 53.4914)
 
 [node name="Main" type="Node"]
 script = ExtResource("3")
@@ -25,17 +22,17 @@ position = Vector2(413.003, 395.272)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="Floor" type="StaticBody2D" parent="."]
+[node name="Floor" parent="." instance=ExtResource("4_3dxm6")]
 position = Vector2(400, 513.5)
-scale = Vector2(12.1212, 2.62121)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(0.5775, -5.5318)
-shape = SubResource("RectangleShape2D_fos0i")
+[node name="Floor2" parent="." instance=ExtResource("4_3dxm6")]
+position = Vector2(2763, 517)
 
-[node name="Sprite2D" type="Sprite2D" parent="Floor"]
-position = Vector2(0.742501, 0.953758)
-texture = ExtResource("6")
+[node name="Floor3" parent="." instance=ExtResource("4_3dxm6")]
+position = Vector2(1997, 517)
+
+[node name="Floor4" parent="." instance=ExtResource("4_3dxm6")]
+position = Vector2(1196, 513)
 
 [node name="TurretsSpawner" type="Node" parent="."]
 script = ExtResource("5")
