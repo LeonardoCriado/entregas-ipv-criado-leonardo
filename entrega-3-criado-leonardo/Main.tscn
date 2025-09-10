@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnc5muoeyfwah"]
+[gd_scene load_steps=8 format=3 uid="uid://dnc5muoeyfwah"]
 
 [ext_resource type="PackedScene" uid="uid://87su3rinuscl" path="res://entities/player/Player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cwss7yl8udbui" path="res://assets/textures/background.png" id="2"]
@@ -6,14 +6,22 @@
 [ext_resource type="PackedScene" uid="uid://bscjwoaotlcqc" path="res://entities/enemies/Turret.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://c0ob8wj5qk0uq" path="res://world/Floor.tscn" id="4_3dxm6"]
 [ext_resource type="Script" uid="uid://ertnqm8kd3lw" path="res://entities/enemies/TurretsSpawner.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://ts5sqptol3u2" path="res://world/cubo.tscn" id="7_lgr22"]
 
 [node name="Main" type="Node"]
 script = ExtResource("3")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -5
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 19.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2")
 expand_mode = 1
 
@@ -37,3 +45,9 @@ position = Vector2(1196, 513)
 [node name="TurretsSpawner" type="Node" parent="."]
 script = ExtResource("5")
 turret_scene = ExtResource("4")
+
+[node name="Cubo" parent="." instance=ExtResource("7_lgr22")]
+position = Vector2(196, 151)
+
+[node name="Cubo2" parent="." instance=ExtResource("7_lgr22")]
+position = Vector2(199, 227)

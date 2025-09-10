@@ -5,8 +5,8 @@ extends CharacterBody2D
 @export var ACCELERATION: float = 20.0
 @export var H_SPEED_LIMIT: float = 600.0
 @export var FRICTION_WEIGHT: float = 0.1
-@export var JUMP_SPEED: float = -50
-@export var GRAVITY: float = 2
+@export var JUMP_SPEED: float = -100
+@export var GRAVITY: float = 10
 
 var projectile_container: Node
 
