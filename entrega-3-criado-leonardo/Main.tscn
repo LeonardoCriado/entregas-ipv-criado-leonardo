@@ -27,6 +27,7 @@ expand_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("1")]
 position = Vector2(413.003, 395.272)
+JUMP_SPEED = -500.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
