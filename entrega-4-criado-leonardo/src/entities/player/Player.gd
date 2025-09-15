@@ -8,6 +8,8 @@ extends CharacterBody2D
 ## ruta estática al mismo.
 ## https://docs.godotengine.org/es/stable/tutorials/scripting/scene_unique_nodes.html
 @onready var weapon: Node = $"%Weapon"
+@onready var body_animations: AnimationPlayer = $BodyAnimations
+
 
 @export var ACCELERATION: float = 3750.0 # Lo multiplicamos por delta, asi que es 60.0 / (1.0 / 60.0)
 @export var H_SPEED_LIMIT: float = 600.0
@@ -31,6 +33,7 @@ func _ready() -> void:
 func initialize(projectile_container: Node = get_parent()) -> void:
 	self.projectile_container = projectile_container
 	weapon.projectile_container = projectile_container
+	body_animations.play("idle")
 
 
 func _physics_process(delta: float) -> void:
