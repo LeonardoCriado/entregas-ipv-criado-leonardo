@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 			-H_SPEED_LIMIT,
 			H_SPEED_LIMIT
 		)
-		body_pivot.set_scale(Vector2(1 - 2 * float(h_movement_direction < 0),1))
+		body_pivot.set_scale(Vector2(h_movement_direction,1))
 	else:
 		velocity.x = lerp(velocity.x, 0.0, FRICTION_WEIGHT * delta) if abs(velocity.x) > 1 else 0
 	

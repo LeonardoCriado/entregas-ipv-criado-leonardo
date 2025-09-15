@@ -3,6 +3,7 @@ extends StaticBody2D
 @onready var fire_position: Node2D = $FirePosition
 @onready var fire_timer: Timer = $FireTimer
 @onready var raycast: RayCast2D = $RayCast2D
+@onready var body_anim: AnimatedSprite2D = $Body
 
 @export var projectile_scene: PackedScene
 
@@ -16,6 +17,7 @@ var dead: bool = false
 func _ready() -> void:
 	fire_timer.timeout.connect(fire)
 	set_physics_process(false)
+	_play_animation("idle")
 
 
 func initialize(turret_pos: Vector2, projectile_container: Node) -> void:
@@ -79,4 +81,5 @@ func _on_animation_finished() -> void:
 ## Wrapper sobre el llamado a animación para tener un solo punto de entrada controlable
 ## (en el caso de que necesitemos expandir la lógica o debuggear, por ejemplo)
 func _play_animation(animation: String) -> void:
-	pass ## Acá debe ir la lógica de llamado a animaciones
+	if body_anim.sprite_frames.has_animation(animation):
+		body_anim.play(animation)

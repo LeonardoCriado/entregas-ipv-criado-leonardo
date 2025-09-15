@@ -1,13 +1,49 @@
-[gd_scene load_steps=8 format=3 uid="uid://bd5hj26cc16d2"]
+[gd_scene load_steps=13 format=3 uid="uid://bd5hj26cc16d2"]
 
-[ext_resource type="Texture2D" uid="uid://cl6weutp8sgpe" path="res://assets/textures/turret.png" id="1"]
 [ext_resource type="Script" uid="uid://mvifnud8nrv3" path="res://src/entities/enemies/Turret.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://22mlxu8p1pyp" path="res://src/entities/enemies/TurretProjectile.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://cvy38xjo8lmsg" path="res://assets/textures/enemies/golem/Golem_IdleA.png" id="3_chgy7"]
 [ext_resource type="Script" uid="uid://biif72o373js7" path="res://src/entities/enemies/DetectionArea.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://bctnrl3hx26n" path="res://assets/textures/green_circle.png" id="5"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_aag6v"]
+atlas = ExtResource("3_chgy7")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wtxx"]
+atlas = ExtResource("3_chgy7")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcn5k"]
+atlas = ExtResource("3_chgy7")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnkdk"]
+atlas = ExtResource("3_chgy7")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_njpiu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aag6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wtxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcn5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnkdk")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(32, 64)
+size = Vector2(15, 24)
 
 [sub_resource type="CircleShape2D" id="2"]
 radius = 328.39
@@ -22,16 +58,21 @@ projectile_scene = ExtResource("3")
 one_shot = true
 
 [node name="FirePosition" type="Marker2D" parent="."]
-position = Vector2(0, -30.0339)
+position = Vector2(0, -20)
 
-[node name="Body" type="Sprite2D" parent="."]
-texture = ExtResource("1")
+[node name="Body" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_njpiu")
+animation = &"Idle"
+frame = 2
+frame_progress = 0.354999
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -12)
 shape = SubResource("1")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(0.0428963, -30.0659)
+position = Vector2(0, -20)
 target_position = Vector2(0, 0)
 collision_mask = 3
 
