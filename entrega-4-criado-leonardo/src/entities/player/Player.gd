@@ -33,7 +33,7 @@ func _ready() -> void:
 func initialize(projectile_container: Node = get_parent()) -> void:
 	self.projectile_container = projectile_container
 	weapon.projectile_container = projectile_container
-	body_animations.play("idle")
+	
 
 
 func _physics_process(delta: float) -> void:
@@ -48,8 +48,10 @@ func _physics_process(delta: float) -> void:
 			-H_SPEED_LIMIT,
 			H_SPEED_LIMIT
 		)
+		body_animations.play("Walk")
 	else:
 		velocity.x = lerp(velocity.x, 0.0, FRICTION_WEIGHT * delta) if abs(velocity.x) > 1 else 0
+		body_animations.play("idle")
 	
 	# Jump
 	# NO multiplicamos por delta ya que se aplica una sola vez
