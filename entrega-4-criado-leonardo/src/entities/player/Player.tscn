@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bg6s38wn8ss5x"]
+
+[ext_resource type="Script" uid="uid://tp4fxm4jsgcy" path="res://src/entities/player/Player.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dfpovafiqq7ma" path="res://assets/textures/player.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cxvdy8nrhcryn" path="res://assets/textures/cannon.png" id="3"]
+[ext_resource type="Script" uid="uid://bxm1bqpwq3bk5" path="res://src/entities/player/Cannon.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://dnl107pupmqic" path="res://src/entities/player/PlayerProjectile.tscn" id="5"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(64, 64)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
+floor_max_angle = 0.802851
+floor_snap_length = 16.0
+platform_floor_layers = 4294901761
+script = ExtResource("1")
+push_force = 160.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="BodyAnimations" type="AnimationPlayer" parent="."]
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(-0.0635071, 0.165405)
+texture = ExtResource("2")
+
+[node name="WeaponContainer" type="Node2D" parent="."]
+
+[node name="Weapon" type="Sprite2D" parent="WeaponContainer"]
+unique_name_in_owner = true
+position = Vector2(-0.0635071, 0.165405)
+texture = ExtResource("3")
+script = ExtResource("4")
+projectile_scene = ExtResource("5")
+
+[node name="WeaponTip" type="Marker2D" parent="WeaponContainer/Weapon"]
+position = Vector2(15, 0)
