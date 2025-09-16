@@ -32,7 +32,6 @@ func initialize(spawn_position: Vector2, direction: Vector2) -> void:
 	## hermanos, ya que las animaciones califican como "Resources" y son únicos, y,
 	## por lo tanto, compartidos.
 	projectile_animations.play("fire_start")
-	#player_projectile_sprite.play("Fire")
 	projectile_animations.queue("fire_loop")
 
 

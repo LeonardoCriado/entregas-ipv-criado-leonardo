@@ -17,7 +17,7 @@ var dead: bool = false
 func _ready() -> void:
 	fire_timer.timeout.connect(fire)
 	set_physics_process(false)
-	_play_animation("idle")
+	_play_animation("Idle")
 
 
 func initialize(turret_pos: Vector2, projectile_container: Node) -> void:
