@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cgadr55reetnl" path="res://src/entities/Projectile.tscn" id="1"]
 
 [sub_resource type="CircleShape2D" id="1"]
-radius = 8.0
+radius = 4.0
 
 [node name="PlayerProjectile" instance=ExtResource("1")]
 

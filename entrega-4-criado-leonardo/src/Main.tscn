@@ -28,10 +28,6 @@ position = Vector2(304, 0)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_k2i6c")
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="BackgroundContainer/ParallaxBackground"]
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="BackgroundContainer/ParallaxBackground"]
-
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Ground" type="Node2D" parent="Environment"]
@@ -95,20 +91,20 @@ position = Vector2(1608.14, 497.862)
 [node name="Obstacles" type="Node2D" parent="Environment/Objects"]
 
 [node name="Obstacle" parent="Environment/Objects/Obstacles" instance=ExtResource("6")]
-position = Vector2(1496.68, 186.419)
+position = Vector2(1477, 211)
 
 [node name="Obstacle2" parent="Environment/Objects/Obstacles" instance=ExtResource("6")]
-position = Vector2(485.687, 442.792)
+position = Vector2(492, 476)
 
 [node name="Obstacle3" parent="Environment/Objects/Obstacles" instance=ExtResource("6")]
-position = Vector2(485.266, 399.065)
+position = Vector2(492, 457)
 mass = 20.0
 
 [node name="Obstacle4" parent="Environment/Objects/Obstacles" instance=ExtResource("6")]
-position = Vector2(515.538, 442.371)
+position = Vector2(504, 476)
 
 [node name="Obstacle5" parent="Environment/Objects/Obstacles" instance=ExtResource("6")]
-position = Vector2(516.379, 398.224)
+position = Vector2(504, 457)
 
 [node name="Goal" parent="Environment/Objects" instance=ExtResource("9")]
 position = Vector2(1464.51, 5.62158)

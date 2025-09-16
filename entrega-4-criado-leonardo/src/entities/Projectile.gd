@@ -7,6 +7,7 @@ extends Node2D
 @onready var lifetime_timer: Timer = $LifetimeTimer
 @onready var hitbox: Area2D = $Hitbox
 @onready var projectile_animations: AnimationPlayer = $ProjectileAnimations
+@onready var player_projectile_sprite: AnimatedSprite2D = $PlayerProjectileSprite
 
 @export var VELOCITY: float = 800.0
 
@@ -31,6 +32,7 @@ func initialize(spawn_position: Vector2, direction: Vector2) -> void:
 	## hermanos, ya que las animaciones califican como "Resources" y son únicos, y,
 	## por lo tanto, compartidos.
 	projectile_animations.play("fire_start")
+	#player_projectile_sprite.play("Fire")
 	projectile_animations.queue("fire_loop")
 
 
