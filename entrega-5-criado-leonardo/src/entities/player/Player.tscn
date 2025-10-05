@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dvm2rslkg23fn"]
+[gd_scene load_steps=30 format=3 uid="uid://dvm2rslkg23fn"]
 
 [ext_resource type="Script" uid="uid://k6lgg24n4g0n" path="res://src/entities/player/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dhtokuwmgphp" path="res://assets/textures/player/player_sheet.png" id="2"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b2frruyyyiljc" path="res://src/entities/player/PlayerProjectile.tscn" id="5"]
 [ext_resource type="Script" uid="uid://bbu1nfd6mpe2y" path="res://src/entities/player/states/DeadState.gd" id="5_tse5b"]
 [ext_resource type="Texture2D" uid="uid://d2n3umb3swssx" path="res://assets/textures/fx/hits/hits-4/hits-4-6.png" id="6"]
+[ext_resource type="Script" uid="uid://b7t271t3d0qtj" path="res://src/entities/player/states/JumpState.gd" id="6_4cd8d"]
 [ext_resource type="Texture2D" uid="uid://cgtr2eg4ubnea" path="res://assets/textures/fx/hits/hits-4/hits-4-7.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://dt1ufodscjoao" path="res://assets/textures/fx/hits/hits-4/hits-4-4.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://gdqfpfo3viai" path="res://assets/textures/fx/hits/hits-4/hits-4-3.png" id="9"]
@@ -332,6 +333,9 @@ state_id = "walk"
 script = ExtResource("5_tse5b")
 state_id = "dead"
 
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("6_4cd8d")
+
 [node name="BodyAnimations" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_wjetm")
@@ -341,17 +345,17 @@ libraries = {
 
 [node name="RayCast2D1" type="RayCast2D" parent="FloorRaycasts"]
 enabled = false
-target_position = Vector2(0, 5)
+target_position = Vector2(0, 1)
 
 [node name="RayCast2D2" type="RayCast2D" parent="FloorRaycasts"]
 position = Vector2(-3, 0)
 enabled = false
-target_position = Vector2(0, 5)
+target_position = Vector2(0, 1)
 
 [node name="RayCast2D3" type="RayCast2D" parent="FloorRaycasts"]
 position = Vector2(3, 0)
 enabled = false
-target_position = Vector2(0, 5)
+target_position = Vector2(0, 1)
 
 [node name="BodyPivot" type="Node2D" parent="."]
 
