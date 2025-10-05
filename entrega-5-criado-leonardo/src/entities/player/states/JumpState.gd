@@ -1,6 +1,9 @@
 extends PlayerState
 
+@export
+var jumps_limit: int = 1
 
+var jumps: int = 0
 
 ## ID del estado. Debe de ser único entre todos los estados
 
@@ -13,7 +16,7 @@ func enter() -> void:
 
 # Limpia el estado. Por ej, reiniciar valores de variables o detener timers
 func exit() -> void:
-	pass
+	jumps = 0
 
 
 # Callback derivado de _physics_process
@@ -37,9 +40,10 @@ func update(delta: float) -> void:
 
 # Callback derivado de _input
 func handle_input(event: InputEvent) -> void:
-	pass
-
-
+	if event.is_action_pressed("jump") && jumps < jumps_limit:
+		jumps += 1
+		character.velocity.y -= character.jump_speed
+		character._play_animation("jump")
 
 
 func _on_animation_finished(anim_name: StringName) -> void:

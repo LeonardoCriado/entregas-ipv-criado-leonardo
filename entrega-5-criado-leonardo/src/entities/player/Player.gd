@@ -44,15 +44,6 @@ func initialize(_projectile_container: Node = get_parent()) -> void:
 	weapon.projectile_container = projectile_container
 
 
-# El único elemento que queda abstraer de esta función
-# es el manejo del salto. Esta parte del código no va a
-# seguir formando parte del código del player, y, en su lugar
-# lo migraremos al código del estado Jump correspondiente
-func _process_input() -> void:
-	# Jump Action
-	var jump: bool = Input.is_action_just_pressed(&"jump")
-	if jump && is_on_floor_raycasted():
-		velocity.y -= jump_speed
 
 
 # Dado que es un comportamiento común a varios states diferentes,
