@@ -319,7 +319,7 @@ shape = SubResource("1")
 script = ExtResource("2_brwq7")
 character = NodePath("..")
 start_state = NodePath("Idle")
-states_list = [NodePath("Idle"), NodePath("Walk"), NodePath("Dead")]
+states_list = [NodePath("Idle"), NodePath("Walk"), NodePath("Dead"), NodePath("Jump")]
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_dky6r")
@@ -335,6 +335,7 @@ state_id = "dead"
 
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("6_4cd8d")
+state_id = "jump"
 
 [node name="BodyAnimations" type="AnimationPlayer" parent="."]
 libraries = {

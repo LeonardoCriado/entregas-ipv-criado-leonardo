@@ -12,7 +12,8 @@ func exit() -> void:
 
 func handle_input(event: InputEvent) -> void:
 	# Aquí se podría manejar, por ejemplo, transiciones a estados como Jump
-	pass
+	if event.is_action_pressed("jump") &&  character.is_on_floor():
+		finished.emit("jump")
 
 
 # En esta función vamos a manejar las acciones apropiadas para este estado
