@@ -28,6 +28,11 @@ func update(delta: float) -> void:
 			finished.emit("idle")
 		else:
 			finished.emit("walk")
+	else:
+		if character.velocity.y > 0:
+			character._play_animation(&"fall")
+		else:
+			character._play_animation(&"jump")
 
 
 # Callback derivado de _input
@@ -43,4 +48,8 @@ func _on_animation_finished(anim_name: StringName) -> void:
 
 # Callback genérico para eventos manejados como strings.
 func handle_event(event: StringName, value = null) -> void:
-	pass
+	match event:
+		&"hit":
+			character._handle_hit(value)
+			if character.dead:
+				finished.emit(&"dead")
