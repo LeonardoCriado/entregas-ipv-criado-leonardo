@@ -20,7 +20,6 @@ signal died()
 @onready var body_animations: AnimationPlayer = $BodyAnimations
 @onready var body_pivot: Node2D = $BodyPivot
 @onready var floor_raycasts: Array = $FloorRaycasts.get_children()
-@onready var state_machine: Node = $StateMachine
 
 @export var acceleration: float = 3750.0 # Lo multiplicamos por delta, asi que es 60.0 / (1.0 / 60.0)
 @export var h_speed_limit: float = 300.0
@@ -38,7 +37,6 @@ var dead: bool = false
 
 func _ready() -> void:
 	initialize()
-	hit.connect(state_machine.notify_hit)
 
 
 func initialize(_projectile_container: Node = get_parent()) -> void:
@@ -46,15 +44,6 @@ func initialize(_projectile_container: Node = get_parent()) -> void:
 	weapon.projectile_container = projectile_container
 
 
-# El único elemento que queda abstraer de esta función
-# es el manejo del salto. Esta parte del código no va a
-# seguir formando parte del código del player, y, en su lugar
-# lo migraremos al código del estado Jump correspondiente
-func _process_input() -> void:
-	# Jump Action
-	var jump: bool = Input.is_action_just_pressed(&"jump")
-	if jump && is_on_floor_raycasted():
-		velocity.y -= jump_speed
 
 
 # Dado que es un comportamiento común a varios states diferentes,

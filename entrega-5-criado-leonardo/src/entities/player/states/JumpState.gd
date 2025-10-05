@@ -1,26 +1,22 @@
 extends PlayerState
 
+@export
+var jumps_limit: int = 1
 
-func _ready() -> void:
-	pass
+var jumps: int = 0
+
+## ID del estado. Debe de ser único entre todos los estados
 
 
-# Inicializa el estado. Por ej, cambiar la animación
+# Inicializa el estado. Por ej, cambiar la animación¿
 func enter() -> void:
 	character.velocity.y -= character.jump_speed
 	character._play_animation("jump")
 
 
-
 # Limpia el estado. Por ej, reiniciar valores de variables o detener timers
 func exit() -> void:
-	pass
-
-
-# Callback derivado de _input
-func handle_input(event: InputEvent) -> void:
-	if event.is_action_pressed("jump") && character.is_on_floor():
-		finished.emit("jump")
+	jumps = 0
 
 
 # Callback derivado de _physics_process
@@ -32,9 +28,9 @@ func update(delta: float) -> void:
 	character._apply_movement(delta)
 	if character.is_on_floor():
 		if character.h_movement_direction == 0:
-			finished.emit(&"idle")
+			finished.emit("idle")
 		else:
-			finished.emit(&"walk")
+			finished.emit("walk")
 	else:
 		if character.velocity.y > 0:
 			character._play_animation(&"fall")
@@ -42,7 +38,14 @@ func update(delta: float) -> void:
 			character._play_animation(&"jump")
 
 
-# Callback cuando finaliza una animación en tiempo del estado actual
+# Callback derivado de _input
+func handle_input(event: InputEvent) -> void:
+	if event.is_action_pressed("jump") && jumps < jumps_limit:
+		jumps += 1
+		character.velocity.y -= character.jump_speed
+		character._play_animation("jump")
+
+
 func _on_animation_finished(anim_name: StringName) -> void:
 	pass
 
