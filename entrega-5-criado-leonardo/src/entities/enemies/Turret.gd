@@ -63,14 +63,17 @@ func _physics_process(_delta: float) -> void:
 		var next_point: Vector2 = path.front()
 		
 		while global_position.distance_to(next_point) < pathfinding_step_threshold:
+			path.pop_front()
 			if path.is_empty():
 				idle_timer.start()
+				break
 			next_point = path.front()
 		
 		velocity = (
 			velocity + 
 			global_position.direction_to(next_point) * speed
 			).clampf(speed,max_speed)
+		body_anim.flip_h = velocity.x < 0
 	else:
 		## Damos vuelta el cuerpo para que mire al objetivo en el eje x
 		## y usamos la dirección a la que se casteó el raycast
