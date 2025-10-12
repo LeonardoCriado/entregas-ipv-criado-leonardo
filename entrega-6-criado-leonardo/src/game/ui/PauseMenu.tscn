@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dn3fkdp1t71m6" path="res://src/game/ui/PauseMenu.gd" id="1"]
 [ext_resource type="FontFile" path="res://assets/fonts/Default-Big.tres" id="2"]
-[ext_resource type="FontFile" path="res://assets/fonts/Default-Medium.tres" id="3"]
+[ext_resource type="FontFile" uid="uid://d3grqrho4843k" path="res://assets/fonts/Default-Medium.tres" id="3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkb4l"]
 content_margin_left = 0.0
@@ -85,10 +85,13 @@ border_width_bottom = 1
 border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
 
 [node name="PauseMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1")
 

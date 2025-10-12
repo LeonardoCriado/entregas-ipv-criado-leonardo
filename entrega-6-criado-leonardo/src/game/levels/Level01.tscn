@@ -171,9 +171,7 @@ script = ExtResource("1_6tm4t")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
-[node name="GUI" parent="UILayer" instance=ExtResource("2_sbuhd")]
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HUD" parent="UILayer" instance=ExtResource("2_sbuhd")]
 
 [node name="PauseMenu" parent="UILayer" instance=ExtResource("3_xcfqc")]
 grow_horizontal = 2

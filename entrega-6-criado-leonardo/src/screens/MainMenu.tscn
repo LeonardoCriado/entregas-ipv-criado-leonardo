@@ -232,6 +232,23 @@ theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_tkluq")
 theme_override_styles/focus = SubResource("StyleBoxFlat_a078r")
 text = "Start"
 
+[node name="OptionsButton" type="Button" parent="CanvasLayer/Container/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xif3j")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_xif3j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5a1cm")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_5a1cm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_tkluq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_tkluq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a078r")
+text = "Options
+"
+
 [node name="ExitButton" type="Button" parent="CanvasLayer/Container/Buttons"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
@@ -249,6 +266,8 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_a078r")
 text = "Exit"
 
 [node name="OptionsMenu" parent="CanvasLayer" instance=ExtResource("11_a078r")]
+visible = false
 
 [connection signal="pressed" from="CanvasLayer/Container/Buttons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Container/Buttons/OptionsButton" to="CanvasLayer/OptionsMenu" method="show"]
 [connection signal="pressed" from="CanvasLayer/Container/Buttons/ExitButton" to="." method="_on_exit_button_pressed"]
