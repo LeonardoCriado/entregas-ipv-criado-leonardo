@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://b1avikl8fshvv"]
+[gd_scene load_steps=26 format=4 uid="uid://b1avikl8fshvv"]
 
 [ext_resource type="Script" uid="uid://dr10w05dwxk25" path="res://src/screens/MainMenu.gd" id="1"]
 [ext_resource type="FontFile" path="res://assets/fonts/Default-Big.tres" id="2"]
@@ -119,6 +119,26 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4mfc"]
+bg_color = Color(0.20784314, 0.1254902, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.93333334, 0.6666667, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxlw4"]
+bg_color = Color(0.3553134, 0.35531363, 0.3553135, 1)
+shadow_size = 2
+
+[sub_resource type="FontVariation" id="FontVariation_vyve6"]
+base_font = ExtResource("3")
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1")
@@ -254,6 +274,113 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/OptionsMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.003921569, 0.003921569, 0.003921569, 0.2509804)
+
+[node name="MainPanel" type="Panel" parent="CanvasLayer/OptionsMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 20.0
+offset_right = -50.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t4mfc")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/OptionsMenu/MainPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 21.0
+offset_right = -6.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/OptionsMenu/MainPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/OptionsMenu/MainPanel/ScrollContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pxlw4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/OptionsMenu/MainPanel/ScrollContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="PanelInput" type="PanelContainer" parent="CanvasLayer/OptionsMenu/MainPanel/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Input" type="Label" parent="CanvasLayer/OptionsMenu/MainPanel/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/PanelInput"]
+layout_mode = 2
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelAction" type="PanelContainer" parent="CanvasLayer/OptionsMenu/MainPanel/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Action" type="Label" parent="CanvasLayer/OptionsMenu/MainPanel/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/PanelAction"]
+layout_mode = 2
+text = "Move Left"
+
+[node name="ReturnButton" type="Button" parent="CanvasLayer/OptionsMenu/MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.5
+offset_top = -23.0
+offset_right = 45.5
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xif3j")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_xif3j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5a1cm")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_5a1cm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_tkluq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_tkluq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a078r")
+text = "Return
+"
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionsMenu/MainPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = SubResource("FontVariation_vyve6")
+theme_override_font_sizes/font_size = 19
+text = "Opciones"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/Container/Buttons/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Container/Buttons/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/OptionsMenu/MainPanel/ReturnButton" to="." method="_on_start_button_pressed"]
