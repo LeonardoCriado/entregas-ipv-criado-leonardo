@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://cja2afo0qw7hx"]
+
+[ext_resource type="Script" uid="uid://cqj2iylad5p17" path="res://src/game/ui/ActionInput.gd" id="1_tm7hl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxlw4"]
+bg_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.25882354, 0.25882354, 0.25882354, 1)
+border_blend = true
+corner_detail = 11
+
+[node name="ActionInput" type="PanelContainer"]
+texture_filter = 1
+offset_right = 113.0
+offset_bottom = 23.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pxlw4")
+script = ExtResource("1_tm7hl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="PanelInput" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Input" type="Label" parent="HBoxContainer/PanelInput"]
+layout_mode = 2
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="PanelAction" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Action" type="Label" parent="HBoxContainer/PanelAction"]
+layout_mode = 2
+text = "Move Left"
+horizontal_alignment = 1
