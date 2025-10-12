@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0wl53hsyfl8g"]
+[gd_scene load_steps=12 format=3 uid="uid://d0wl53hsyfl8g"]
 
 [ext_resource type="Script" uid="uid://dn3fkdp1t71m6" path="res://src/game/ui/PauseMenu.gd" id="1"]
 [ext_resource type="FontFile" path="res://assets/fonts/Default-Big.tres" id="2"]
 [ext_resource type="FontFile" uid="uid://d3grqrho4843k" path="res://assets/fonts/Default-Medium.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://dwdjdmqhyodpk" path="res://src/game/ui/OptionsMenu.tscn" id="4_rabgt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkb4l"]
 content_margin_left = 0.0
@@ -119,9 +120,9 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 offset_left = 10.0
-offset_top = 17.0
+offset_top = 6.0
 offset_right = -10.0
-offset_bottom = 38.0
+offset_bottom = 27.0
 text = "Paused"
 label_settings = SubResource("LabelSettings_tr5av")
 horizontal_alignment = 1
@@ -134,9 +135,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 15.0
-offset_top = -8.0
+offset_top = -32.0
 offset_right = -15.0
-offset_bottom = 12.0
+offset_bottom = 18.0
 
 [node name="ResumeButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
@@ -154,4 +155,43 @@ theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_kuqvp")
 theme_override_styles/focus = SubResource("StyleBoxFlat_80nc3")
 text = "Resume"
 
+[node name="OptionsButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rmcsp")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_rmcsp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rabgt")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_rabgt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_kuqvp")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_kuqvp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_80nc3")
+text = "Options"
+
+[node name="RerturnButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rmcsp")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_rmcsp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rabgt")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_rabgt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_kuqvp")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_kuqvp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_80nc3")
+text = "Back to Menu
+"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("4_rabgt")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="Panel/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/OptionsButton" to="OptionsMenu" method="show"]
+[connection signal="pressed" from="Panel/VBoxContainer/RerturnButton" to="." method="_on_rerturn_button_pressed"]
